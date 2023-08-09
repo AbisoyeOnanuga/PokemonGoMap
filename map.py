@@ -25,14 +25,11 @@ geo_data = geo_data.drop_duplicates(subset=['name', 'longitude', 'latitude'], ke
 map = folium.Map(location=[37.7749, -122.4194], zoom_start=8, tiles="CartoDB Positron") 
 
 # create custom icon objects for each Pokemon
-icons = {}
-for icon_path in geo_data["icon_path"].unique():
-    icons[icon_path] = folium.features.CustomIcon(icon_path, icon_size=(30, 30), icon_anchor=(15, 15))
 
 # create marker objects for each Pokemon
 for index, row in geo_data.iterrows():
     # create a marker for each Pokemon using the custom icon and the coordinates
-    folium.Marker(location=[row["geometry"].y, row["geometry"].x], popup=f"{row['name']} ({row['num']})", icon=icons[row["icon_path"]]).add_to(map)
+    folium.Marker(location=[row["geometry"].y, row["geometry"].x], popup=f"{row['name']} ({row['num']})").add_to(map)
 
 print(map)
 
