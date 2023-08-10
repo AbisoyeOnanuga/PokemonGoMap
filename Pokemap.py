@@ -28,7 +28,7 @@ print(longitude, latitude)
 print(type(longitude))
 
 #create a base map with location and zoom level
-map = folium.Map(location = [37.7749, -122.4194], zoom_start=12, tiles = "CartoDB Positron")
+map = folium.Map(location = [37.7749, -122.4194], zoom_start=12, tiles = "CartoDB Positron", prefer_canvas = True)
 
 #create a marker object for each pokedata
 for coords in pokedata:
